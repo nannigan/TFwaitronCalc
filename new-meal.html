@@ -6,10 +6,22 @@
             </div>
             <div class="panel-body">
               <form name='calculator' novalidate>
-                Base meal price: $ <input type="number" name="mealBase"  ng-model="mealBase" /><br><br>
-                Tax Rate: % <input type="number" name="taxRate"  ng-model="taxRate" /><br><br>
-                Tip Percentage: % <input type="number" name="tipRate"  ng-model="tipRate" /><br><br>
-                <button type='submit' ng-click="calcCustCharge();">Calculate</button><button class="pull-right" ng-click='cancel();'>Cancel</button>
+                Base meal price: $ <input type="number" name="mealBase"  ng-model="newMeal.mealBase" /><br><br>
+                Tax Rate: % <input type="number" name="taxRate"  ng-model="newMeal.taxRate" /><br><br>
+                Tip Percentage: % <input type="number" name="tipRate"  ng-model="newMeal.tipRate" /><br><br>
+                <button type='submit' ng-click="newMeal.calcCustCharge();">Calculate</button><button class="pull-right" ng-click='newMeal.cancel();'>Cancel</button>
               </form>
+            </div>
+          </div>
+           <div class="panel panel-default">
+            <div class="panel-heading">
+            <h3 class="panel-title">Customer Charges</h3>
+            </div>
+            <div class="panel-body" >
+             Meal Subtotal: {{ newMeal.mealSubtotal | currency:'$' }}
+               <br>
+             Meal Tip:  {{newMeal.tip |  currency:'$'}}
+              <br>
+              Meal Total: {{newMeal.total |  currency:'$'}}
             </div>
           </div>
