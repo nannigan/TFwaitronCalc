@@ -1,0 +1,27 @@
+        <div class='col-sm-3'> <!-- display -->
+          <div class="panel panel-default">
+            <div class="panel-heading">
+            <h3 class="panel-title">Customer Charges</h3>
+            </div>
+            <div class="panel-body" >
+             Meal Subtotal: {{ mealSubtotal | currency:'$' }}
+               <br>
+             Meal Tip:  {{tip |  currency:'$'}}
+              <br>
+              Meal Total: {{total |  currency:'$'}}
+            </div>
+          </div>
+          <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">My Big Bucks!</h3>
+            </div>
+            <div class="panel-body">
+
+             Total Tips: {{newMeal.tipTotal | currency:'$'}}<br>
+             Number of Meals: {{newMeal.mealCount}}<br>
+             Average Tip: {{newMeal.tipTotal/newMeal.mealCount | currency:'$'}}
+
+            </div>
+          </div>
+        </div>
+        <button ng-click='reset();' class= 'pull-right'> Reset</button>
