@@ -2,7 +2,7 @@
 
 angular.module('wsCalc', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider)
-    {
+    {   //$locationProvider.hashPrefix('!');//for Google crawler
         $routeProvider
         .when('/',
         {
@@ -12,79 +12,85 @@ angular.module('wsCalc', ['ngRoute'])
         .when('/new-meal',
         {
             templateUrl: 'new-meal.html',
-            controller: 'newMealCtrl',
+            controller: 'newMealCtrl as newMeal',
 
         })
         .when('/my-earnings',
         {
             templateUrl: 'my-earnings.html',
-            controller: 'myEarningsCtrl',
+            controller: 'myEarningsCtrl as myEarnings',
 
-        })
-        .when('/error',
-            {
-                template: '<p>uhoh, u r on a road to nowhere</p>'
-            });
+
+        });
+        // .when('/error',
+        //     {
+        //         template: '<p>uhoh, u r on a road to nowhere</p>'
+        //     });
 
     }])
     .run(function($rootScope, $location)
     {
         $rootScope.$on('$routeChangeError', function()
         {
-            $location.path('/error');
+            $location.path('/home');
         });
     })
-.controller('newMealCtrl', function($scope){
-
-
-
-
-$scope.mealCount = 0;
-$scope.tipTotal = 0;
-calcCustCharge = function(){
-	mealbase = $scope.mealBase;
-	tiprate = $scope.tipRate/100;
-	taxrate = $scope.taxRate/100;
-	console.log(taxrate);
-	console.log(tiprate);
-	$scope.mealSubtotal = mealbase + (taxrate * mealbase);
-	$scope.tip = tiprate * $scope.mealSubtotal;
-	$scope.total = $scope.mealSubtotal + $scope.tip;
-	currentTip = $scope.tip;
-	$scope.tipTotal = currentTip + $scope.tipTotal;
-	$scope.mealCount += 1;
-
-};
-$scope.calcCustCharge = calcCustCharge;
-
-
-cancel = function(){
-	$scope.mealBase = null;
-	$scope.taxRate = null;
-	$scope.tipRate = null;
-
-};
-
-$scope.cancel = cancel;
+.controller('HomeCtrl',  function () {
+    this.message ='Hi I work';
 
 })
-.controller('myEarningsCtrl' function($scope){
-//  mealSubtotal
-// tip
-// total
+// .factory('doCalcs', function(){})
+.controller('newMealCtrl', function(){
 
-// mealCount
-// tipTotal
+//as newMeal
 
-reset = function(){
-    $scope.cancel();
-    $scope.mealSubtotal = null;
-    $scope.tip = null;
-    $scope.total = null;
-    $scope.tipTotal = null;
-    $scope.mealCount = null;
-};
-$scope.reset = reset;
 
-});
+    this.mealCount = 0;
+    this.tipTotal = 0;
+    calcCustCharge = function(){
+    	mealbase = this.mealBase;
+    	tiprate = this.tipRate/100;
+    	taxrate = this.taxRate/100;
+    	console.log(taxrate);
+    	console.log(tiprate);
+    	this.mealSubtotal = mealbase + (taxrate * mealbase);
+    	this.tip = tiprate * this.mealSubtotal;
+    	this.total = this.mealSubtotal + this.tip;
+    	currentTip = this.tip;
+    	this.tipTotal = currentTip + this.tipTotal;
+    	this.mealCount += 1;
+
+    };
+    this.calcCustCharge = calcCustCharge;
+
+
+    cancel = function(){
+    	this.mealBase = null;
+    	this.taxRate = null;
+    	this.tipRate = null;
+
+    };
+
+    this.cancel = cancel;
+
+})
+.controller('myEarningsCtrl', function(){
+     this.mealSubtotal = newMeal.mealSubtotal;
+     this.tip = newMeal.tip;
+     this.total = newMeal.total;
+     this.mealCount = newMeal.mealCount;
+     this.tipTotal = newMeal.tipTotal;
+
+
+    reset = function(){
+        newMeal.cancel();
+       newMeal.mealSubtotal = null;
+       newMeal.tip = null;
+       newMeal.total = null;
+       newMeal.tipTotal = null;
+       newMeal.mealCount = null;
+    };
+    this.reset = reset;
+
+    });
 
