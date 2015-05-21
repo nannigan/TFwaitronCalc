@@ -3,6 +3,7 @@
 body{
 	font-family: Lato, sans-serif;
 	font-size: 16px;
+    background-image: url('img/waitron.gif') ;
 
 }
 
@@ -10,20 +11,49 @@ h1,h2,h3,h4,h5,h6{
 	font-family: Oswald, sans-serif;
 	font-weight:400;
 	letter-spacing: .03em;
+    color:#4b87ca;
 }
 input{
 	margin-bottom: 10px;
 }
 
 a, a:active, a:visited{
-    color: #4c90a5;
+    color: #4b87ca;
+}
+button{
+    background-color: #4b87ca;
+    color: #fff;
+    border: none;
+}
+h2{
+    margin-left:20px;
+}
+
+.panel-title{
+    color:  #4b87ca;
+}
+
+.content{
+    display: block;
+  /*  min-width: 80%;*/
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 
 .nobull{
  list-style: none;
+ text-align:center
 }
 .nobull .nobull-item{
   display: inline;
   text-transform: uppercase;
+}
+
+
+@media (min-width: 768px){
+   .content{
+        margin: 0 auto;
+        display: block;
+    }
 }

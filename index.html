@@ -9,21 +9,22 @@
   </head>
   <body>
 
-    <div class="container">
- <ul class='nobull'>
-    <li class='nobull-item'><a href="#/">Home</a>  |  </li>
-    <li class='nobull-item'><a href="#/new-meal">New Meal</a>  |  </li>
-    <li class='nobull-item'><a href="#/my-earnings">My Earnings</a></li>
-  </ul>
-      <h2>waitron-unit earnings calc</h2>
-<div class='row'>
-    <div ng-view></div>
- </div>
+<div class="container-fluid">
 
-          <!-- right col-->
-
-          </div>
+        <div class='content'>
+                    <ul class='nobull'>
+                    <li class='nobull-item'><a href="#/">Home</a>  |  </li>
+                    <li class='nobull-item'><a href="#/new-meal">New Meal</a>  |  </li>
+                    <li class='nobull-item'><a href="#/my-earnings">My Earnings</a></li>
+                    </ul>
+                    <h2>waitron-unit earnings calc</h2>
+                <div ng-controller='mainCtrl'>
+                    <div ng-view></div>
+                </div>
         </div>
+
+</div>
+
 
 
 
