@@ -49,7 +49,11 @@ h2{
   display: inline;
   text-transform: uppercase;
 }
-
+.something{
+    display: block;
+    padding: 20px;
+    background-color: rgba(255,255,255 .7)
+}
 
 @media (min-width: 768px){
    .content{
