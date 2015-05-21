@@ -6,11 +6,11 @@
             </div>
             <div class="panel-body">
 
-             Total Tips: {{myEarnings.tipTotal | currency:'$'}}<br>
-             Number of Meals: {{myEarnings.mealCount}}<br>
-             Average Tip: {{myEarnings.tipTotal/myEarnings.mealCount | currency:'$'}}
+             Total Tips: {{tipTotal | currency:'$'}}<br>
+             Number of Meals: {{mealCount}}<br>
+             Average Tip: {{tipTotal/mealCount | currency:'$'}}
 
             </div>
           </div>
         </div>
-        <button ng-click='myEarnings.reset();' class= 'pull-right'> Reset</button>
+        <button ng-click='reset();' class= 'pull-right'> Reset</button>
