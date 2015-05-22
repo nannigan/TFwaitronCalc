@@ -1,4 +1,4 @@
-        <div class='col-sm-3'> <!-- display -->
+
 
           <div class="panel panel-default">
           <div class="panel-heading">
@@ -9,8 +9,8 @@
              Total Tips: {{tipTotal | currency:'$'}}<br>
              Number of Meals: {{mealCount}}<br>
              Average Tip: {{tipTotal/mealCount | currency:'$'}}
-
+<button ng-click='reset();' class= 'pull-right'> Reset</button>
             </div>
+
           </div>
-        </div>
-        <button ng-click='reset();' class= 'pull-right'> Reset</button>
+
