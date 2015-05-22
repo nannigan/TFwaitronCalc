@@ -1,6 +1,7 @@
 // Code goes here
 
-angular.module('wsCalc', ['ngRoute']).config(['$routeProvider', function($routeProvider)
+angular.module('wsCalc', ['ngRoute','ngAnimate'])
+.config(['$routeProvider', function($routeProvider)
 { //$locationProvider.hashPrefix('!');//for Google crawler
     $routeProvider.when('/',
     {
@@ -17,15 +18,27 @@ angular.module('wsCalc', ['ngRoute']).config(['$routeProvider', function($routeP
         controller: 'myEarningsCtrl'
     });
 
-}]).run(function($rootScope, $location)
+}])
+.run(function($rootScope, $location)
 {
     $rootScope.$on('$routeChangeError', function()
     {
         $location.path('/home');
     });
+    $rootScope.$on('$routeChangeStart', function()
+    {
+        $rootScope.go = true;
+
+    });
+    $rootScope.$on('$routeChangeSuccess', function()
+    {
+    $timeout(function() {
+        $rootScope.go = false;
+      }, 2000);
+    });
 }).controller('mainCtrl', function($rootScope, $scope)
 {
-
+//http://stackoverflow.com/questions/16739084/angularjs-using-rootscope-as-a-data-store
     $rootScope.mealCount = 0;
     $rootScope.tipTotal = 0;
 
@@ -78,7 +91,7 @@ angular.module('wsCalc', ['ngRoute']).config(['$routeProvider', function($routeP
 
 }).controller('myEarningsCtrl', function($rootScope, $scope)
 {
-    console.log($rootScope.tipTotal);
+   // console.log($rootScope.tipTotal);
     $scope.tipTotal = $rootScope.tipTotal;
     $scope.mealCount = $rootScope.mealCount;
 
